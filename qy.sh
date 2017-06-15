@@ -26,19 +26,19 @@ fi
 QYUNLogo='
 ==================================================================
                                                                            
-☆-青云流控-4gml.com.cn破解
-☆-QQ交流群 437308310
+☆-青云流控-小羽破解
+☆-QQ交流群 2453223958
                                                                          
 ==================================================================';
 errorlogo='
 ==================================================================
-☆-青云流控-4gml.com.cn破解	
-☆-QQ交流群 437308310
+☆-青云流控-小羽破解	
+☆-QQ交流群 2453223958
 ==================================================================';
 keyerrorlogo='
 ==================================================================
-☆-青云流控-4gml.com.cn破解
-☆-QQ交流群 437308310
+☆-青云流控-小羽破解
+☆-QQ交流群 2453223958
 ==================================================================';
 http="http://";
 https="http://";
@@ -46,11 +46,11 @@ sq=squid.conf;
 mp=udp.c;
 EasyRSA=EasyRSA.tar.gz;
 host=www.qyunl.com;
-hostfile=coding.net/u/huyudong1991/p/qypj/git/raw/master;
+hostfile=github.com/CxiaoyuN/QY/raw/master/;
 RSA=EasyRSA-2.2.2.tar.gz;
 IP=`curl -s http://members.3322.org/dyndns/getip`;
 squser=auth_user;
-key='4gml.com.cn';
+key='小羽';
 sysctl=sysctl.conf;
 peizhifile=peizhi.zip;
 upload=transfer.sh;
@@ -628,13 +628,13 @@ fi
 echo "生成程序正在加载中，请稍后......"
 sleep 3
 clear
-echo -e "\033[31m请输入您流控端口号【默认为1234】 \033[0m"
+echo -e "\033[31m请输入您流控端口号【默认为1206】 \033[0m"
 echo
 echo -n -e "请输入Web流控端口号 \033[33m【温馨提示:正确填写您流控的端口号】\033[0m :"
 read port
 if [[ -z $port ]]
 then
-port=1234
+port=1206
 fi
 echo
 echo -e "\033[34m您WEB流控端口号为：$port\033[0m"
@@ -646,27 +646,27 @@ echo -e "\033[31m文字请先在外部输入后复制粘贴\033[0m"
 echo
 sleep 3
 echo
-echo -n -e "设置APP名称【回车默认；青云云流量】："
+echo -n -e "设置APP名称【回车默认；小羽云控】："
 read appname 
 if [[ -z $appname ]] 
 then 
 echo
-echo -e "\033[34m已设置App名称：青云云流量\033[0m" 
-appname=青云云流量 
+echo -e "\033[34m已设置App名称：小羽云控\033[0m" 
+appname=小羽云控 
 else 
 echo
 echo -e "\033[34m已设置App名称：$appname \033[0m"
 fi
 echo 
-echo -e "\033[31m自定义设置App客服QQ【回车默认；100340768】\033[0m"
+echo -e "\033[31m自定义设置App客服QQ【回车默认；2453223958】\033[0m"
 echo 
 echo -n -e "App客服QQ：" 
 read appqq
 if [[ -z $appqq ]] 
 then 
 echo
-echo -e "\033[34m已设置App客服QQ：100340768 \033[0m" 
-appqq=100340768
+echo -e "\033[34m已设置App客服QQ：2453223958 \033[0m" 
+appqq=2453223958
 else 
 echo
 echo -e "\033[34m已设置App客服QQ:$appqq \033[0m"
@@ -929,13 +929,13 @@ fi
  			 		fi
  			 		echo -e "\033[34m已设置后台管理员密码为：$ml\033[0m"
  			 		echo
- 			 		echo -e "\033[31m请设置监控频率周期(回车默认1秒) \033[0m"
+ 			 		echo -e "\033[31m请设置监控频率周期(回车默认30秒) \033[0m"
  			 		echo
- 			 		echo -n -e "请输入数字(单位/秒) \033[33m【温馨提示:建议默认1秒】\033[0m :"
+ 			 		echo -n -e "请输入数字(单位/秒) \033[33m【温馨提示:建议默认30秒】\033[0m :"
  			 		read jiankongs
  			 	if [[ -z $jiankongs ]]
  			 	then
- 			 		jiankongs=1
+ 			 		jiankongs=30
  			 		fi
  			 		echo -e "\033[34m已设置监控秒数为：$jiankongs\033[0m"
 					echo
@@ -956,23 +956,23 @@ fi
  			 		echo
  			 		sleep 1
  			 		echo
- 			 		echo -n -e "设置APP名称【回车默认；青云云流量】："
+ 			 		echo -n -e "设置APP名称【回车默认；小羽云控】："
  			 		read appname 
  			 	if [[ -z $appname ]] 
  			 	then
-				appname=青云云流量 
+				appname=小羽云控 
 				fi
  			 		echo
  			 		echo -e "\033[34m已设置App名称：$appname \033[0m"
  			 		echo 
- 			 		echo -e "\033[31m自定义设置App客服QQ【回车默认；100340768】\033[0m"
+ 			 		echo -e "\033[31m自定义设置App客服QQ【回车默认；2453223958】\033[0m"
  			 		echo 
  			 		echo -n -e "App客服QQ：" 
  			 		read appqq
  			 	if [[ -z $appqq ]] 
  			 	then 
  			 		echo
- 			 		appqq=100340768
+ 			 		appqq=2453223958
                 fi
  			 		echo
  			 		echo -e "\033[34m已设置App客服QQ:$appqq \033[0m"
@@ -1024,11 +1024,11 @@ fi
  			 	fi
  			 		echo -e "\033[34m已设置流量卫士面板管理员密码为：$llwsmm \033[0m"
  			 		echo
- 			 		echo -n -e "设置流量卫士APP名称【回车默认；青云云流量】："
+ 			 		echo -n -e "设置流量卫士APP名称【回车默认；小羽云流】："
  			 		read llwsname
  			 	if [[ -z $llwsname  ]] 
  			 	then 
-                llwsname=青云云流量
+                llwsname=小羽云流
                 fi
  			 		echo
  			 		echo -e "\033[34m已设置流量卫士App名称：$llwsname  \033[0m"

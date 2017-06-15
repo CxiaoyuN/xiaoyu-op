@@ -302,13 +302,13 @@ read adminIP
 echo
 echo -e "\033[34m你输入主服务器端口IP：$adminIP \033[0m" 
 echo
-echo -n " 请输入管理(主)服务器端口 【回车默认；1234】："
+echo -n " 请输入管理(主)服务器端口 【回车默认；1206】："
 read adminPort
 if [[ -z $adminPort ]] 
 then 
 echo
-echo -e "\033[34m你输入的管理(主)服务器端口为：1234 \033[0m" 
-adminPort=1234
+echo -e "\033[34m你输入的管理(主)服务器端口为：1206 \033[0m" 
+adminPort=1206
 else 
 echo
 echo -e "\033[34m你输入的管理(主)服务器端口为：$adminPort \033[0m" 
@@ -891,13 +891,13 @@ fi
  			 		echo -e "\033[34m已设置常规代理端口：$sqport\033[0m"
  			 		fi 
  			 		echo
- 			 		echo -e "\033[31m请设置Web流控端口号【默认为1234】  \033[0m"
+ 			 		echo -e "\033[31m请设置Web流控端口号【默认为1206】  \033[0m"
  			 		echo
  			 		echo -n -e "请输入Web流控端口号 \033[33m【温馨提示:建议使用默认端口】\033[0m :"
  			 		read port
  			 	if [[ -z $port ]]
  			 	then
- 			 		port=1234
+ 			 		port=1206
  			 		fi
  			 		echo
  			 		echo -e "\033[34m已设置WEB流控端口号为：$port\033[0m"
@@ -1480,8 +1480,8 @@ then
 if [[ $sqport == "80" ]]
 then
 echo
-echo "检测到HTTP端口和流控端口有冲突，系统默认流控为1234端口"
-port=1234
+echo "检测到HTTP端口和流控端口有冲突，系统默认流控为1206端口"
+port=1206
 fi
 fi
 echo -e "\033[34m已设置WEB流控端口号为：$port\033[0m"

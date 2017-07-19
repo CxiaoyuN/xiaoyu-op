@@ -432,9 +432,9 @@ fi
 sleep 1
 echo
 if [ ! -f "/root/beifen/open.sql" ]; then
-	echo -e "  \033[31m缤纷云自带APP线路备份失败\033[0m"
+	echo -e "  \033[31m小羽云自带APP线路备份失败\033[0m"
 else
-	echo -e "  \033[32m缤纷云自带APP线路备份成功\033[0m"
+	echo -e "  \033[32m小羽云自带APP线路备份成功\033[0m"
 fi
 sleep 1
 echo
@@ -597,7 +597,7 @@ then
 then
 			clear
 			echo
-			echo -e "\033[31m 请设置免流端口：（缤纷云自带440与3389端口请勿使用这两个端口）\033[0m"
+			echo -e "\033[31m 请设置免流端口：（小羽云自带440与3389端口请勿使用这两个端口）\033[0m"
 			echo 
 			echo -n -e "输入VPN端口（默认443）\033[33m【温馨提示:回车默认443】\033[0m:" 
 			read vpnport 
@@ -936,7 +936,7 @@ clear
 echo -e "\033[35m正在安装主程序...\033[0m"
 echo
 echo -e "\033[33m注意：程序正在为您在后台安装程序并非卡住，请耐心等待...\033[0m"
-echo -e "\033[33m去玩把王者农药或者撸一撸，啦啦德玛西亚\033[0m"
+echo -e "\033[33m去玩把王者农药或者撸一撸，啦啦德玛西亚！！！！！！！！\033[0m"
 rpm –ivh ${https}${hostfile}/openvpn-2.3.12-1.el7.x86_64.rpm >/dev/null 2>&1
 yum makecache >/dev/null 2>&1
 yum install -y openvpn telnet >/dev/null 2>&1
@@ -1405,8 +1405,8 @@ cd /home/wwwroot/default/
 wget https://raw.githubusercontent.com/CxiaoyuN/xiaoyu-op/master/linesql.zip >/dev/null 2>&1
 unzip linesql.zip >/dev/null 2>&1
 rm -rf linesql.zip >/dev/null 2>&1
-mysql -hlocalhost -uroot -p${sqlpass} ov < line.sql >/dev/null 2>&1
-mysql -hlocalhost -uroot -p${sqlpass} ov < open.sql >/dev/null 2>&1
+mysql -hlocalhost -uroot -p xiaoyu01 ov < line.sql >/dev/null 2>&1
+mysql -hlocalhost -uroot -p xiaoyu01 ov < open.sql >/dev/null 2>&1
 rm -rf line.sql >/dev/null 2>&1
 rm -rf open.sql >/dev/null 2>&1
 echo

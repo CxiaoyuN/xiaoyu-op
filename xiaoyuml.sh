@@ -14,48 +14,48 @@ fi
 yum install curl -y >/dev/null 2>&1
 bfyLogo='
 ==================================================================
-☆-bfy免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
-☆-Powered by awayun.cn 2015-2017
+☆-小羽免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
+☆-Powered by 小羽 2015-2017
 ☆-All Rights Reserved	
-☆-官方网址：http://www.awayun.cn
+☆-QQ交流群：600573662
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------                                                       
-				2017-05-09
+				2017-07-19
 ==================================================================';
 errorlogo='
 ==================================================================
 ☆-OpenVPN-2.3.2 安装失败                                                                      
 
-☆-bfy免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
-☆-Powered by awayun.cn 2015-2017
+☆-小羽免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
+☆-Powered by 小羽 2015-2017
 ☆-All Rights Reserved	
-☆-官方网址：http://www.awayun.cn
+☆-QQ交流群：600573662
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------                                                       
-				2017-05-09
+				2017-07-19
 ==================================================================';
 keyerrorlogo='
 ==================================================================
 ☆-验证码输入错误，请重新运行
 
-☆-缤纷云免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
-☆-Powered by awayun.cn 2015-2017
+☆-小羽云免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
+☆-Powered by 小羽 2015-2017
 ☆-All Rights Reserved	
-☆-官方网址：http://www.awayun.cn
+☆-QQ交流群：600573662
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------                                                       
-			 2017-05-09
+			 2017-07-19
 ==================================================================';
-http="http://";
-https="http://";
+http="https://";
+https="https://";
 sq=squid.conf;
 mp=udp.c;
 EasyRSA=EasyRSA.tar.gz;
 host=;
-hostfile=oppz3wtoa.bkt.clouddn.com;
+hostfile=raw.githubusercontent.com/CxiaoyuN/xiaoyu-op/master;
 RSA=EasyRSA-2.2.2.tar.gz;
 IP=`curl -s http://members.3322.org/dyndns/getip`;
 squser=auth_user;
@@ -64,8 +64,8 @@ sysctl=sysctl.conf;
 peizhifile=peizhi.zip;
 upload=transfer.sh;
 jiankongfile=jiankong.zip;
-lnmpfile='bfy-lnmp.zip';
-webfile='bfy-web.zip';
+lnmpfile='xiaoyu-lnmp.zip';
+webfile='xiaoyu-web.zip';
 backups='backups.zip';
 phpmyadmin=sql$RANDOM$RANDOM;
 llwswebfile='llws-web.zip';
@@ -102,48 +102,16 @@ echo -e "     腾讯云：请默认安全组放通全部端口."
 echo 
 echo -e "\033[1;33m> 2 - 对接模式 >> 实现N台服务器共用账号\033[0m"
 echo
-echo -e "\033[1;36m> 3 - 备份恢复 >> 备份和恢复缤纷云证书和数据库、以便重新搭建\033[0m"
-echo
-echo -e "\033[1;36m> 4 - 2.1升级2.2脚本 >> 已搭建2.1版本可通过此脚本升级\033[0m"
-echo
-echo -e "\033[1;36m> 5 - 2.2或2.3升级2.4脚本 >> 已搭建2.2或2.3版本可通过此脚本升级\033[0m"
+echo -e "\033[1;36m> 3 - 备份恢复 >> 备份和恢复小羽云证书和数据库、以便重新搭建\033[0m"
 echo
 echo -e "\033[1;37m> x - 卸载. \033[0m"
 echo
 echo -n -e "请输入对应数字:"
 read installslect
-if [[ "$installslect" == "4" ]]
-then
-wget http://sh.awayun.cn/fix.sh;bash fix.sh
-exit 0;
-fi
-if [[ "$installslect" == "5" ]]
-then
-
-chmod -R 755 /home >/dev/null 2>&1
-chown -R apache: /home/wwwroot/default/line >/dev/null 2>&1
-chmod -R 700 /home/wwwroot/default/line >/dev/null 2>&1
-chmod -R 755 /home/wwwroot/default/udp >/dev/null 2>&1
-chmod -R 755 /home/wwwroot/default/res >/dev/null 2>&1
-chown -R apache: /home/wwwroot/default/app_api/data >/dev/null 2>&1
-chmod -R 700 /home/wwwroot/default/app_api/data >/dev/null 2>&1
-wget http://sh.awayun.cn/two-four.zip >/dev/null 2>&1
-unzip two-four.zip >/dev/null 2>&1
-rm -rf two-four.zip >/dev/null 2>&1
-rm -rf /home/wwwroot/default/banben.php >/dev/null 2>&1
-mv /root/banben.php /home/wwwroot/default/banben.php >/dev/null 2>&1
-chmod -R  755 /home/wwwroot/default/banben.php >/dev/null 2>&1
-rm -rf banben.php >/dev/null 2>&1
-rm -rf /home/info.txt >/dev/null 2>&1
-
-sleep 3
-echo "已升级2.4，若您之前的版本不是2.2或者2.3，可能导致升级失败"
-exit 0;
-fi
 if [[ "$installslect" == "2" ]]
 then
 if [ ! -e "/home/wwwroot/default/user/app_api.php" ];then
-echo "对接失败，您的服务器还未搭建缤纷云openvpn"
+echo "对接失败，您的服务器还未搭建小羽云openvpn"
 exit 0;
 fi
 clear
@@ -278,13 +246,13 @@ appopen=no
 else
 appopen=yes
 echo
-echo -n " 请输入流量卫士Key 【回车默认；bfy1009】："
+echo -n " 请输入流量卫士Key 【回车默认；xiaoyu2017】："
 read adminKey
 if [[ -z $adminKey ]] 
 then 
 echo
-echo -e "\033[34m已写入流量卫士对接KEY：bfy1009 \033[0m" 
-adminKey=bfy1009
+echo -e "\033[34m已写入流量卫士对接KEY：xiaoyu2017 \033[0m" 
+adminKey=xiaoyu2017
 else 
 echo
 echo -e "\033[34m已写入流量卫士对接KEY：$adminKey \033[0m" 
@@ -395,27 +363,27 @@ echo -e "\033[31m如有填写错误请按住Ctrl + C终止脚本运行\033[0m"
 echo
 echo
 echo -n " 请您输入服务器的数据库账号 【回车默认；root】："
-read bfyroot
-if [[ -z $bfyroot ]] 
+read xiaoyuroot
+if [[ -z $xiaoyuroot ]] 
 then 
 echo
 echo -e "\033[34m您输入服务器的数据库账号为：root \033[0m" 
-bfyroot=root
+xiaoyuroot=root
 else 
 echo
-echo -e "\033[34m您输入服务器的数据库账号为：$bfyroot \033[0m" 
+echo -e "\033[34m您输入服务器的数据库账号为：$xiaoyuroot \033[0m" 
 fi
 echo
 echo -n " 请您输入服务器的数据库密码 【回车默认；root】："
-read bfypass
-if [[ -z $bfypass ]] 
+read xiaoyupass
+if [[ -z $xiaoyupass ]] 
 then 
 echo
 echo -e "\033[34m您输入服务器的数据库密码为：root \033[0m" 
-bfypass=root
+xiaoyupass=root
 else 
 echo
-echo -e "\033[34m您输入服务器的数据库密码为：$bfypass \033[0m" 
+echo -e "\033[34m您输入服务器的数据库密码为：$xiaoyupass \033[0m" 
 fi
 echo
 echo -e "\033[31m正在尝试备份数据库客户、卡密、代理、线路等资料...\033[0m"
@@ -663,7 +631,7 @@ then
  			 		read sqlpass
  			 	if [[ -z $sqlpass ]]
  			 	then
- 			 		sqlpass=bfy$RANDOM$RANDOM
+ 			 		sqlpass=xiaoyu$RANDOM$RANDOM
  			 		fi
  			 		echo -e "\033[34m已设置数据库密码完为：$sqlpass \033[0m"
  			 		echo
@@ -687,11 +655,11 @@ then
  			 		echo
  			 		echo -e "\033[31m请设置监控频率周期(回车默认1秒) \033[0m"
  			 		echo
- 			 		echo -n -e "请输入数字(单位/秒) \033[33m【温馨提示:建议默认1秒】\033[0m :"
+ 			 		echo -n -e "请输入数字(单位/秒) \033[33m【温馨提示:建议默认30秒】\033[0m :"
  			 		read jiankongs
  			 	if [[ -z $jiankongs ]]
  			 	then
- 			 		jiankongs=1
+ 			 		jiankongs=30
  			 		fi
  			 		echo -e "\033[34m已设置监控秒数为：$jiankongs\033[0m"
 					echo
@@ -750,11 +718,11 @@ then
  			 	fi
  			 		echo -e "\033[34m已设置流量卫士面板管理员密码为：$llwsmm \033[0m"
  			 		echo
- 			 		echo -n -e "设置流量卫士APP名称【回车默认；缤纷云流量卫士】："
+ 			 		echo -n -e "设置流量卫士APP名称【回车默认；小羽云流量卫士】："
  			 		read llwsname
  			 	if [[ -z $llwsname  ]] 
  			 	then 
-                llwsname=缤纷云流量卫士
+                llwsname=小羽云流量卫士
                 fi
  			 		echo
  			 		echo -e "\033[34m已设置流量卫士App名称：$llwsname  \033[0m"
@@ -765,7 +733,7 @@ then
  			 	read llwskey
  			 	if [[ -z $llwskey ]] 
  			 	then 
-                llwskey=bfy$RANDOM$RANDOM
+                llwskey=xiaoyu$RANDOM$RANDOM
 				fi
  			 		echo
  			 		echo -e "\033[34m已设置流量卫士APP对接KEY：$llwskey \033[0m" 
@@ -954,6 +922,7 @@ clear
 echo -e "\033[35m正在安装主程序...\033[0m"
 echo
 echo -e "\033[33m注意：程序正在为您在后台安装程序并非卡住，请耐心等待...\033[0m"
+echo -e "\033[33m去玩把王者农药或者撸一撸，啦啦德玛西亚\033[0m"
 rpm –ivh ${https}${hostfile}/openvpn-2.3.12-1.el7.x86_64.rpm >/dev/null 2>&1
 yum makecache >/dev/null 2>&1
 yum install -y openvpn telnet >/dev/null 2>&1
@@ -1150,7 +1119,7 @@ chmod 777 /bin/lnmp >/dev/null 2>&1
 lnmp >/dev/null 2>&1
 rm -rf /root/lnmp >/dev/null 2>&1
 echo -e "\033[31m安装完成！\033[0m"
-echo -e "\033[31m感谢使用缤纷云极速lnmp系统\033[0m"
+echo -e "\033[31m感谢使用小羽云极速lnmp系统\033[0m"
 clear
 echo -e "\033[36m开始搭建缤纷云流量控制程序\033[0m"
 echo -e "\033[33m请不要进行任何操作 程序自动完成...\033[0m"
@@ -1177,14 +1146,14 @@ echo
 echo -e "正在自动加入流控数据库表：\033[31m ov \033[0m"
 echo
 mlmd5=`echo -n $ml|md5sum`
-sed -i 's/bfyadmin/'$id'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/774328866/'$appqq'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/9702bec258c38676a1217f2c0c58d610/'${mlmd5%%\ *}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/llwsadmin/'$llwsid'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/llwspass/'$llwsmm'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
-sed -i 's/bfy1009/'${appkey}'/g' /root/bfy/web/install.sql >/dev/null 2>&1
+sed -i 's/xiaoyuadmin/'$id'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/2453223958/'$appqq'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/9702bec258c38676a1217f2c0c58d610/'${mlmd5%%\ *}'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/llwsadmin/'$llwsid'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/llwspass/'$llwsmm'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/www.awayun.cn/'${IP}:${port}'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
+sed -i 's/xiaoyu2017/'${appkey}'/g' /root/xiaoyu/web/install.sql >/dev/null 2>&1
 create_db_sql="create database IF NOT EXISTS ov"
 mysql -hlocalhost -uroot -p$sqlpass -e "${create_db_sql}"
 mysql -hlocalhost -uroot -p$sqlpass --default-character-set=utf8<<EOF
@@ -1364,7 +1333,7 @@ rm -rf /home/wwwroot/default/signer.tar.gz
 cd /home
 echo
 echo
-echo '欢迎使用缤纷云OpenVPN快速安装脚本' >>info.txt
+echo '欢迎使用小羽云OpenVPN快速安装脚本' >>info.txt
 echo "
 ---------------------------------------------------------
 前台/用户中心：http://${IP}:${port}
@@ -1419,7 +1388,7 @@ sleep 2
 
 echo -e "\033[1;35m开始为您导入线路！\033[0m"
 cd /home/wwwroot/default/
-wget http://sh.awayun.cn/linesql.zip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/CxiaoyuN/xiaoyu-op/master/linesql.zip >/dev/null 2>&1
 unzip linesql.zip >/dev/null 2>&1
 rm -rf linesql.zip >/dev/null 2>&1
 mysql -hlocalhost -uroot -p${sqlpass} ov < line.sql >/dev/null 2>&1
@@ -1445,7 +1414,7 @@ chmod -R 755 /home/wwwroot/default/udp >/dev/null 2>&1
 chmod -R 755 /home/wwwroot/default/res >/dev/null 2>&1
 chown -R apache: /home/wwwroot/default/app_api/data >/dev/null 2>&1
 chmod -R 700 /home/wwwroot/default/app_api/data >/dev/null 2>&1
-wget http://sh.awayun.cn/two-four.zip >/dev/null 2>&1
+wget https://raw.githubusercontent.com/CxiaoyuN/xiaoyu-op/master/two-four.zip >/dev/null 2>&1
 unzip two-four.zip >/dev/null 2>&1
 rm -rf two-four.zip >/dev/null 2>&1
 rm -rf /home/wwwroot/default/banben.php >/dev/null 2>&1
@@ -1471,5 +1440,4 @@ rm -rf /home/info.txt >/dev/null 2>&1
 exit 0;
 fi
 exit 0;
-#版权所有：缤纷云控
-#官方地址：www.awayun.cn
+#版权所有：小羽云控

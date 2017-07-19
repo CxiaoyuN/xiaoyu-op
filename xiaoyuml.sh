@@ -12,7 +12,7 @@ if [ ! -e "/dev/net/tun" ];
 		exit 0;
 fi
 yum install curl -y >/dev/null 2>&1
-bfyLogo='
+xiaoyuLogo='
 ==================================================================
 ☆-小羽免流-Web流控系统-VPN流控系统-云免服务器一键搭建  							
 ☆-Powered by 小羽 2015-2017
@@ -59,7 +59,7 @@ hostfile=raw.githubusercontent.com/CxiaoyuN/xiaoyu-op/master;
 RSA=EasyRSA-2.2.2.tar.gz;
 IP=`curl -s http://members.3322.org/dyndns/getip`;
 squser=auth_user;
-key='awayun.cn';
+key='xiaoyu';
 sysctl=sysctl.conf;
 peizhifile=peizhi.zip;
 upload=transfer.sh;
@@ -72,8 +72,8 @@ llwswebfile='llws-web.zip';
 uploadfile=bfy-openvpn.tar.gz;
 export uploadfile=$uploadfile
 clear
-echo -e "\033[34m $bfyLogo \033[0m"
-echo -n -e "请输入缤纷云控网址： [\033[32m $key \033[0m] ："
+echo -e "\033[34m $xiaoyuLogo \033[0m"
+echo -n -e "请输入小羽云控： [\033[32m $key \033[0m] ："
 read PASSWD
 readkey=$PASSWD
 echo 
@@ -104,10 +104,24 @@ echo -e "\033[1;33m> 2 - 对接模式 >> 实现N台服务器共用账号\033[0m"
 echo
 echo -e "\033[1;36m> 3 - 备份恢复 >> 备份和恢复小羽云证书和数据库、以便重新搭建\033[0m"
 echo
+echo -e "\033[1;36m> 4 - 优化加速 >> 一键安装BBR单边加速协议、优化内核\033[0m"
+echo
+echo -e "\033[1;36m> 5 - 智能解析 >> 智能解析优化是针对用户提供的看视频去广告\033[0m"
+echo
 echo -e "\033[1;37m> x - 卸载. \033[0m"
 echo
 echo -n -e "请输入对应数字:"
 read installslect
+if [[ "$installslect" == "4" ]]
+then
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+exit 0;
+fi
+if [[ "$installslect" == "5" ]]
+then
+wget https://github.com/teddysun/across/raw/master/dns.sh && chmod +x dns.sh && ./dns.sh
+exit 0;
+fi
 if [[ "$installslect" == "2" ]]
 then
 if [ ! -e "/home/wwwroot/default/user/app_api.php" ];then
@@ -309,7 +323,7 @@ mv /root/top_api.php /home/wwwroot/default/app_api/top_api.php >/dev/null 2>&1
 rm -rf /root/*.php
 sed -i 's/localhost/'$adminIP'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
 sed -i 's/root/'$mysqlroot'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
-sed -i 's/bfysql/'$mysqlmima'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
+sed -i 's/xiaoyusql/'$mysqlmima'/g' /home/wwwroot/default/config.php >/dev/null 2>&1
 sed -i 's/localhost/'$adminIP'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
 sed -i 's/root/'$mysqlroot'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
 sed -i 's/qysql/'$mysqlmima'/g' /home/wwwroot/default/app_api/config.php >/dev/null 2>&1
@@ -390,11 +404,11 @@ echo -e "\033[31m正在尝试备份数据库客户、卡密、代理、线路等
 sleep 3
 mkdir -p /root/beifen/
 chmod -R 777 /root/beifen/
-mysqldump -u$bfyroot -p$bfypass ov openvpn >/root/beifen/openvpn.sql
-mysqldump -u$bfyroot -p$bfypass ov auth_kms >/root/beifen/auth_kms.sql
-mysqldump -u$bfyroot -p$bfypass ov auth_daili >/root/beifen/auth_daili.sql
-mysqldump -u$bfyroot -p$bfypass ov open >/root/beifen/open.sql
-mysqldump -u$bfyroot -p$bfypass ov line >/root/beifen/line.sql
+mysqldump -u$xiaoyuroot -p$xiaoyupass ov openvpn >/root/beifen/openvpn.sql
+mysqldump -u$xiaoyuroot -p$xiaoyupass ov auth_kms >/root/beifen/auth_kms.sql
+mysqldump -u$xiaoyuroot -p$xiaoyupass ov auth_daili >/root/beifen/auth_daili.sql
+mysqldump -u$xiaoyuroot -p$xiaoyupass ov open >/root/beifen/open.sql
+mysqldump -u$xiaoyuroot -p$xiaoyupass ov line >/root/beifen/line.sql
 echo
 if [ ! -f "/root/beifen/openvpn.sql" ]; then
 	echo -e "  \033[31m用户数据备份失败\033[0m"
@@ -483,27 +497,27 @@ echo
 echo -e "\033[31m导入需要提供您的数据库资料！如有填写错误请按住Ctrl + C终止脚本运行\033[0m"
 echo
 echo -n " 请您输入服务器的数据库账号 【回车默认；root】："
-read bfyroot
-if [[ -z $bfyroot ]] 
+read xiaoyuroot
+if [[ -z $xiaoyuroot ]] 
 then 
 echo
 echo -e "\033[34m您输入服务器的数据库账号为：root \033[0m" 
-bfyroot=root
+xiaoyuroot=root
 else 
 echo
-echo -e "\033[34m您输入服务器的数据库账号为：$bfyroot \033[0m" 
+echo -e "\033[34m您输入服务器的数据库账号为：$xiaoyuroot \033[0m" 
 fi
 echo
 echo -n " 请您输入服务器的数据库密码 【回车默认；root】："
-read bfypass
-if [[ -z $bfypass ]] 
+read xiaoyupass
+if [[ -z $xiaoyupass ]] 
 then 
 echo
 echo -e "\033[34m您输入服务器的数据库密码为：root \033[0m" 
-bfypass=root
+xiaoyupass=root
 else 
 echo
-echo -e "\033[34m您输入服务器的数据库密码为：$bfypass \033[0m" 
+echo -e "\033[34m您输入服务器的数据库密码为：$xiaoyupass \033[0m" 
 fi
 echo
 echo -e "\033[36m正在整理服务器文件，请稍等！\033[0m"
@@ -513,19 +527,19 @@ sleep 1
 echo
 echo -e "\033[31m整理完毕，开始恢复服务器数据！\033[0m"
 if [ -f "/root/beifen/openvpn.sql" ]; then
-	 mysql -u$bfyroot -p$bfypass -hlocalhost ov < /root/beifen/openvpn.sql
+	 mysql -u$xiaoyuroot -p$xiaoyupass -hlocalhost ov < /root/beifen/openvpn.sql
 fi
 if [ -f "/root/beifen/auth_kms.sql" ]; then
-	 mysql -u$bfyroot -p$bfypass -hlocalhost ov < /root/beifen/auth_kms.sql
+	 mysql -u$xiaoyuroot -p$xiaoyupass -hlocalhost ov < /root/beifen/auth_kms.sql
 fi
 if [ -f "/root/beifen/auth_daili.sql" ]; then
-	 mysql -u$bfyroot -p$bfypass -hlocalhost ov < /root/beifen/auth_daili.sql
+	 mysql -u$xiaoyuroot -p$xiaoyupass -hlocalhost ov < /root/beifen/auth_daili.sql
 fi
 if [ -f "/root/beifen/open.sql" ]; then
-	 mysql -u$bfyroot -p$bfypass -hlocalhost ov < /root/beifen/open.sql
+	 mysql -u$xiaoyuroot -p$xiaoyupass -hlocalhost ov < /root/beifen/open.sql
 fi
 if [ -f "/root/beifen/line.sql" ]; then
-	 mysql -u$bfyroot -p$bfypass -hlocalhost ov < /root/beifen/line.sql
+	 mysql -u$xiaoyuroot -p$xiaoyupass -hlocalhost ov < /root/beifen/line.sql
 fi
 echo
 echo -e "\033[31m数据导入成功，正在为您导入服务器证书\033[0m"
@@ -615,13 +629,13 @@ then
  			 		echo -e "\033[34m已设置常规代理端口：$sqport\033[0m"
  			 		fi 
  			 		echo
- 			 		echo -e "\033[31m请设置Web流控端口号【默认为1234】  \033[0m"
+ 			 		echo -e "\033[31m请设置Web流控端口号【默认为1206】  \033[0m"
  			 		echo
  			 		echo -n -e "请输入Web流控端口号 \033[33m【温馨提示:建议使用默认端口】\033[0m :"
  			 		read port
  			 	if [[ -z $port ]]
  			 	then
- 			 		port=1234
+ 			 		port=1206
  			 		fi
  			 		echo
  			 		echo -e "\033[34m已设置WEB流控端口号为：$port\033[0m"
@@ -649,7 +663,7 @@ then
  			 		read ml
  			 	if [[ -z $ml ]]
  			 	then
- 			 		ml=bfy$RANDOM$RANDOM
+ 			 		ml=xiaoyu$RANDOM$RANDOM
  			 		fi
  			 		echo -e "\033[34m已设置后台管理员密码为：$ml\033[0m"
  			 		echo
@@ -714,7 +728,7 @@ then
  			 		read llwsmm
  			 	if [[ -z $llwsmm ]]
  			 	then
- 			 	llwsmm=bfy$RANDOM$RANDOM
+ 			 	llwsmm=xiaoyu$RANDOM$RANDOM
  			 	fi
  			 		echo -e "\033[34m已设置流量卫士面板管理员密码为：$llwsmm \033[0m"
  			 		echo
@@ -1121,7 +1135,7 @@ rm -rf /root/lnmp >/dev/null 2>&1
 echo -e "\033[31m安装完成！\033[0m"
 echo -e "\033[31m感谢使用小羽云极速lnmp系统\033[0m"
 clear
-echo -e "\033[36m开始搭建缤纷云流量控制程序\033[0m"
+echo -e "\033[36m开始搭建小羽云流量控制程序\033[0m"
 echo -e "\033[33m请不要进行任何操作 程序自动完成...\033[0m"
 cd /root/
 wget ${http}${hostfile}/phpmyadmin.tar.gz >/dev/null 2>&1
@@ -1160,17 +1174,17 @@ mysql -hlocalhost -uroot -p$sqlpass --default-character-set=utf8<<EOF
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY '${sqlpass}' WITH GRANT OPTION;
 flush privileges;
 use ov;
-source /root/bfy/web/install.sql;
+source /root/xiaoyu/web/install.sql;
 EOF
 echo -e "\033[34m设置数据库完成\033[0m"
-rm -rf /root/bfy/web/install.sql >/dev/null 2>&1
+rm -rf /root/xiaoyu/web/install.sql >/dev/null 2>&1
 if [[ $port == "80" ]]
 then
 if [[ $sqport == "80" ]]
 then
 echo
-echo "检测到HTTP端口和流控端口有冲突，系统默认流控为1234端口"
-port=1234
+echo "检测到HTTP端口和流控端口有冲突，系统默认流控为1206端口"
+port=1206
 fi
 fi
 echo -e "\033[34m已设置WEB流控端口号为：$port\033[0m"
@@ -1180,21 +1194,21 @@ sed -i 's/80/'$port'/g' /etc/nginx/conf.d/default.conf >/dev/null 2>&1
 #sed -i 's/ServerName www.example.com:1234/ServerName www.example.com:'$port'/g' /etc/httpd/conf/httpd.conf >/dev/null 2>&1
 #sed -i 's/Listen 1234/Listen '$port'/g' /etc/httpd/conf/httpd.conf >/dev/null 2>&1
 sleep 1
-mv -f ./bfy/sh/login.sh /etc/openvpn/ >/dev/null 2>&1
-mv -f ./bfy/sh/disconnect.sh /etc/openvpn/ >/dev/null 2>&1
-mv -f ./bfy/sh/connect.sh /etc/openvpn/ >/dev/null 2>&1
+mv -f ./xiaoyu/sh/login.sh /etc/openvpn/ >/dev/null 2>&1
+mv -f ./xiaoyu/sh/disconnect.sh /etc/openvpn/ >/dev/null 2>&1
+mv -f ./xiaoyu/sh/connect.sh /etc/openvpn/ >/dev/null 2>&1
 chmod +x /etc/openvpn/*.sh >/dev/null 2>&1
-chmod 777 -R ./bfy/web/* >/dev/null 2>&1
+chmod 777 -R ./xiaoyu/web/* >/dev/null 2>&1
 sleep 1
-sed -i 's/bfysql/'$sqlpass'/g' ./bfy/web/config.php >/dev/null 2>&1
+sed -i 's/xiaoyusql/'$sqlpass'/g' ./xiaoyu/web/config.php >/dev/null 2>&1
 
 rm -rf /home/wwwroot/default/html/index* >/dev/null 2>&1
-mv -f ./bfy/web/* /home/wwwroot/default/ >/dev/null 2>&1
+mv -f ./xiaoyu/web/* /home/wwwroot/default/ >/dev/null 2>&1
 chmod 777 -R /home/wwwroot/default/ >/dev/null 2>&1
 sleep 1
 
 cd /home/wwwroot/default/
-rm -rf /root/bfy/ >/dev/null 2>&1
+rm -rf /root/xiaoyu/ >/dev/null 2>&1
 rm -rf /root/lnmp >/dev/null 2>&1
 rm -rf /root/${webfile} >/dev/null 2>&1
 rm -rf /root/phpmyadmin.tar.gz >/dev/null 2>&1
@@ -1282,7 +1296,7 @@ sudo chmod +x /home/wwwroot/default/android/apktool.jar
 java -jar apktool.jar b llws >/dev/null 2>&1
 cp /home/signer.tar.gz /home/wwwroot/default/android/llws/dist/ >/dev/null 2>&1
 cd /home/wwwroot/default/android/llws/dist
-if [ ! -f "/home/wwwroot/default/android/bfy/dist/signer.tar.gz" ]; then
+if [ ! -f "/home/wwwroot/default/android/xiaoyu/dist/signer.tar.gz" ]; then
     wget ${http}${hostfile}/signer.tar.gz >/dev/null 2>&1
 fi
 tar zxf signer.tar.gz
@@ -1292,7 +1306,7 @@ echo
 if [ ! -e "/home/llws.apk" ];then
 echo -e "\033[31m检测到流量卫士名字为乱码，所以APP没有生成成功。\033[0m"
 else
-echo -e "\033[31m缤纷云流量卫士5.1生成成功\033[0m"
+echo -e "\033[31m小羽云流量卫士5.1生成成功\033[0m"
 fi
 cd /home/wwwroot/default/
 wget ${http}${hostfile}/${llwswebfile} >/dev/null 2>&1
